@@ -93,8 +93,8 @@ class thymio(object):
     def stop(self):
         self.gloop.quit()
 
-    def set(self, var, val):
-        self.network.SetVariable(node, var, dbus.Int16(val))
+    def set(self, var, vals):
+        self.network.SetVariable(node, var, [dbus.Int16(x) for x in vals])
         return self
 
     def get(self, var):
