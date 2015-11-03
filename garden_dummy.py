@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import pythymio
-import random
-
 
 def tg():
     """ dummy tournergauche
