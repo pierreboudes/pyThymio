@@ -187,9 +187,14 @@ def customEvents(*themes):
         ('circle',
          [('circle.off', 'call leds.circle(0,0,0,0,0,0,0,0)'),
           ('circle.front', 'call leds.circle(31,0,0,0,0,0,0,0)'),
+          ('circle.frontright', 'call leds.circle(0,31,0,0,0,0,0,0)'),
           ('circle.right', 'call leds.circle(0,0,31,0,0,0,0,0)'),
+          ('circle.backright', 'call leds.circle(0,0,0,31,0,0,0,0)'),
           ('circle.back', 'call leds.circle(0,0,0,0,31,0,0,0)'),
-          ('circle.left', 'call leds.circle(0,0,0,0,0,0,31,0)')]
+          ('circle.backleft', 'call leds.circle(0,0,0,0,0,31,0,0)'),
+          ('circle.left', 'call leds.circle(0,0,0,0,0,0,31,0)'),
+          ('circle.frontleft', 'call leds.circle(0,0,0,0,0,0,0,31)')
+         ]
         ),
         ('music',
          [('chord.C3', 'call sound.freq(262, 45)'),
