@@ -125,7 +125,6 @@ if __name__ == '__main__':
         state["duration"] = 0
         state["timeout"] = 20
         def dispatch(evt_id, evt_name, evt_args):
-            global state
             if evt_name == "fwd.buttons": #received every 0.1s
                 state["duration"] -= 1
                 if evt_args[0] == 1: #backward

@@ -31,8 +31,6 @@ with pythymio.thymio(["motor"],[]) as Thym:
     state["end"] = max(state["prog"].keys()) + 10
 
     def dispatch(evtid, evt_name, evt_args):
-        global state
-
         # https://www.thymio.org/en:thymioapi motor freq is 100Hz
         if evt_name == "fwd.motor": # every 0.01 sec
             state["left"] += [evt_args[0]]

@@ -13,8 +13,6 @@ with pythymio.thymio(["acc"],[]) as Thym:
     state["delay"] = 10
 
     def dispatch(evtid, evt_name, evt_args):
-        global state
-
         # https://www.thymio.org/en:thymioapi prox freq is 16Hz
         if evt_name == "fwd.acc": # every 0.0625 sec
             state["time"] += 0.0625

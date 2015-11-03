@@ -60,7 +60,6 @@ with pythymio.thymio(["buttons"],
             Thym.send_event('chord.G3')
 
     def dispatch(evt_id, evt_name, evt_args):
-        global state
         i = state["i"] # shorter, read-only
 
         # https://www.thymio.org/en:thymioapi false buttons freq is 100Hz
