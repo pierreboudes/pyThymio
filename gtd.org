@@ -1,18 +1,21 @@
 * Avant le premier TP (exercices 7 mercredi 4 novembre 2015)
 ** DONE Code pour contrôler le Thymio en USB via Linux
 - State "DONE"       from "STARTED"    [2015-10-28 Mer 12:04]
-** WAITING Commande de robots
+** DONE Commande de robots
+- State "DONE"       from "WAITING"    [2015-11-03 Mar 07:21]
 - Devis transmis le 24 septembre pour commande à l'université.
 - ETA lundi 2 novembre (incomplète).
+**
 ** STARTED mise à jour automatique de la Virtual Box
 *** DONE Bouton install Thymio, installe aseba
-*** TODO déploiement du code pyThymio (+ maj auto)
-**** Soit git clone + modification du PATH pour Python PYTHONPATH=:/home/personne/Code/pySpriteWorld:/home/personne/Code/pyCommon:/home/personne/Code
-**** Soit wget au bon endroit:
+*** STARTED déploiement du code pyThymio (+ maj auto)
+**** CANCELLED Soit git clone + modification du PATH pour Python PYTHONPATH=:/home/personne/Code/pySpriteWorld:/home/personne/Code/pyCommon:/home/personne/Code
+**** CANCELLED Soit wget au bon endroit:
 wget https://raw.githubusercontent.com/pierreboudes/pyThymio/master/pythymio.py
-**** Soit copier dans pyCommon
-*** TODO bouton pour asebamedulla 'ser:device=/dev/ttyACM0' ?
-** TODO Fix virtual box USB en salle TP
+**** TODO Soit copier dans pyCommon
+*** CANCELLED bouton pour asebamedulla 'ser:device=/dev/ttyACM0' ?
+** DONE Fix virtual box USB en salle TP
+- State "DONE"       from "STARTED"    [2015-11-03 Mar 07:23]
 tous les étudiants appartiennent bien au groupe vboxsuser
 ** TODO maj firmware Thymio
 ** TODO préparation d'un sac pour tous le matos (40L)
@@ -29,7 +32,8 @@ tous les étudiants appartiennent bien au groupe vboxsuser
 15 Thymios, 1 Pi, une batterie, un RPLidar = 23.7 litres.
 = 15 * 440 + 713 = 7.3 kg
 
-** STARTED sujet exercices 7 dict + accelero + jeu Simon
+** DONE sujet exercices 7 dict + accelero + jeu Simon
+- State "DONE"       from "STARTED"    [2015-11-03 Mar 07:22]
 ** TODO Tirage couleur x 20 de la cheat sheet Thymio
 * Suite
 ** STARTED Envoi de code au ThymioRPI via le web
