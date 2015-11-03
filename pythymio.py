@@ -207,4 +207,4 @@ def customEvents(*themes):
           ('sound.good', 'call sound.system(6)')]
         )
     ])
-    return [e for e in d[x] for x in themes]
+    return [e for x in themes for e in d[x]]
