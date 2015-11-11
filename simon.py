@@ -11,27 +11,10 @@ def randomstr(s, length):
         res += s[random.randint(0, len(s) - 1)]
     return res
 
-with pythymio.thymio(["buttons"],
-                     [('become.yellow','call leds.top(31, 31, 0)'),
-                      ('become.violet','call leds.top(31, 0, 31)'),
-                      ('become.lightblue','call leds.top(0, 31, 31)'),
-                      ('become.green','call leds.top(0, 31, 0)'),
-                      ('become.blue','call leds.top(0, 0, 31)'),
-                      ('become.red','call leds.top(31, 0, 0)'),
-                      ('become.blank', 'call leds.top(0, 0, 0)'),
-                      ('circle.off', 'call leds.circle(0,0,0,0,0,0,0,0)'),
-                      ('circle.front', 'call leds.circle(31,0,0,0,0,0,0,0)'),
-                      ('circle.right', 'call leds.circle(0,0,31,0,0,0,0,0)'),
-                      ('circle.back', 'call leds.circle(0,0,0,0,31,0,0,0)'),
-                      ('circle.left', 'call leds.circle(0,0,0,0,0,0,31,0)'),
-                      ('chord.C3', 'call sound.freq(262, 45)'),
-                      ('chord.E3', 'call sound.freq(330, 45)'),
-                      ('chord.G3', 'call sound.freq(392, 45)'),
-                      ('chord.B3', 'call sound.freq(494, 45)'),
-                      ('sound.bad', 'call sound.system(4)'),
-                      ('sound.good', 'call sound.system(6)')
-                     ]
-) as Thym:
+
+custom = pythymio.customEvents('colors', 'circle', 'sound', 'music')
+
+with pythymio.thymio(["buttons"], custom) as Thym:
 
     state = dict([])
     state["time"] = 0
