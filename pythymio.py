@@ -51,6 +51,8 @@ class thymio(object):
                 aesl.write('<event size="0" name="'+ evt +'"/>\n')
             aesl.write('<node nodeId="1" name="'+node+'">\n')
             #...forward some local events as outgoing global ones
+            if 'prox.comm' in SelectedEvents:
+                aesl.write('prox.comm.enable(1)')
             for evt in SelectedEvents:
                 aesl.write('onevent ' + evt + "\n")
                 args = ""
