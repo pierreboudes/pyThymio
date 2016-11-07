@@ -11,10 +11,7 @@ def randomstr(s, length):
         res += s[random.randint(0, len(s) - 1)]
     return res
 
-
-custom = pythymio.customEvents('colors', 'circle', 'sound', 'music')
-
-with pythymio.thymio(["buttons"], custom) as Thym:
+with pythymio.thymio(["buttons"]) as Thym:
 
     state = dict([])
     state["time"] = 0
@@ -29,20 +26,20 @@ with pythymio.thymio(["buttons"], custom) as Thym:
             Thym.send_event('become.yellow')
             Thym.send_event('circle.back')
             Thym.send_event('chord.B3')
-        if N == "C":
+        elif N == "C":
             Thym.send_event('become.lightblue')
             Thym.send_event('circle.left')
             Thym.send_event('chord.C3')
-        if N == "E":
+        elif N == "E":
             Thym.send_event('become.violet')
             Thym.send_event('circle.front')
             Thym.send_event('chord.E3')
-        if N == "G":
+        elif N == "G":
             Thym.send_event('become.green')
             Thym.send_event('circle.right')
             Thym.send_event('chord.G3')
 
-    def dispatch(evt_id, evt_name, evt_args):
+    def progression(evt_id, evt_name, evt_args):
         i = state["i"] # shorter, read-only
 
         # https://www.thymio.org/en:thymioapi false buttons freq is 100Hz
@@ -115,6 +112,6 @@ with pythymio.thymio(["buttons"], custom) as Thym:
             print evt_name
 
     # Now lets start the loopy thing
-    Thym.loop(dispatch)
+    Thym.loop(progression)
     print "state is %s" % state
     print "Sayonara"

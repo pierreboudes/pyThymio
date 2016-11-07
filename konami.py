@@ -7,11 +7,11 @@ GREATEST_SUFFIX_MATCH = True
 def prefix(s, t):
     return len(s) <= len(t) and s == t[:len(s)]
 
-with pt.thymio(["buttons"], pt.customEvents('circle')) as Thym:
+with pt.thymio(["buttons"]) as Thym:
 
     state = {}
     state["delay"] = 100
-    state["seq"] = "LRLRUUDD" # ← → ← → ↑ ↑ ↓ ↓
+    state["seq"] = "UUDDLRLR" #↑ ↑ ↓ ↓ ← → ← →
     state["i"] = 0
     state["n"] =  len(state["seq"])
     state["etape"] = "read"
@@ -68,7 +68,12 @@ with pt.thymio(["buttons"], pt.customEvents('circle')) as Thym:
                         state["delay"] = 50
                 if state["etape"] == "read" and  i == state["n"]:
                     print "Bravo !"
-                    #Thym.send_event('sound.good')
+                    Thym.send_event('sound.good')
+                    Thym.send_event('become.green')
+                    state["etape"] = "victoire"
+                    state["delay"] = 150
+                elif state["etape"] == "victoire":
+                    Thym.send_event('become.blank')
                     Thym.stop()
 
         else: # Wat?

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import pythymio
 
-with pythymio.thymio(["motor"],[]) as Thym:
+with pythymio.thymio(["motor"]) as Thym:
 
     state = dict([])
     state["time"] = 0

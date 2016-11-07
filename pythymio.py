@@ -29,8 +29,49 @@ ThymioEvents = dict([("button.backward", []),
                 ("timer1", [])])
 
 
+def customEvents(*themes):
+    """ A lexicon of simple customs events, by themes
+        e.g. customEvents('color', 'circle') returns a list
+        of CustomEvents one can pass to thymio.
+    TODO: augment
+    """
+    d = dict([
+        ('colors',
+         [('become.yellow','call leds.top(31, 31, 0)'),
+          ('become.violet','call leds.top(31, 0, 31)'),
+          ('become.lightblue','call leds.top(0, 31, 31)'),
+          ('become.green','call leds.top(0, 31, 0)'),
+          ('become.blue','call leds.top(0, 0, 31)'),
+          ('become.red','call leds.top(31, 0, 0)'),
+          ('become.blank', 'call leds.top(0, 0, 0)')]
+        ),
+        ('circle',
+         [('circle.off', 'call leds.circle(0,0,0,0,0,0,0,0)'),
+          ('circle.front', 'call leds.circle(31,0,0,0,0,0,0,0)'),
+          ('circle.frontright', 'call leds.circle(0,31,0,0,0,0,0,0)'),
+          ('circle.right', 'call leds.circle(0,0,31,0,0,0,0,0)'),
+          ('circle.backright', 'call leds.circle(0,0,0,31,0,0,0,0)'),
+          ('circle.back', 'call leds.circle(0,0,0,0,31,0,0,0)'),
+          ('circle.backleft', 'call leds.circle(0,0,0,0,0,31,0,0)'),
+          ('circle.left', 'call leds.circle(0,0,0,0,0,0,31,0)'),
+          ('circle.frontleft', 'call leds.circle(0,0,0,0,0,0,0,31)')
+         ]
+        ),
+        ('music',
+         [('chord.C3', 'call sound.freq(262, 45)'),
+          ('chord.E3', 'call sound.freq(330, 45)'),
+          ('chord.G3', 'call sound.freq(392, 45)'),
+          ('chord.B3', 'call sound.freq(494, 45)')]
+        ),
+        ('sound',
+         [('sound.bad', 'call sound.system(4)'),
+          ('sound.good', 'call sound.system(6)')]
+        )
+    ])
+    return {e for x in themes for e in d[x]}
+
 class thymio(object):
-    def __init__(self, SelectedEvents, CustomEvents):
+    def __init__(self, SelectedEvents, CustomEvents=customEvents('colors', 'circle', 'sound', 'music')):
         """ Prepare the communication and events propagation on both sides,
             Thymio and the present computer, via DBus.
         """
@@ -171,44 +212,3 @@ def standardEvents(hidden = False):
          return dict(ThymioEvents + ThymioHiddenEvents).keys()
      else:
          return dict(ThymioEvents).keys()
-
-def customEvents(*themes):
-    """ A lexicon of simple customs events, by themes
-        e.g. customEvents('color', 'circle') returns a list
-        of CustomEvents one can pass to thymio.
-    TODO: augment
-    """
-    d = dict([
-        ('colors',
-         [('become.yellow','call leds.top(31, 31, 0)'),
-          ('become.violet','call leds.top(31, 0, 31)'),
-          ('become.lightblue','call leds.top(0, 31, 31)'),
-          ('become.green','call leds.top(0, 31, 0)'),
-          ('become.blue','call leds.top(0, 0, 31)'),
-          ('become.red','call leds.top(31, 0, 0)'),
-          ('become.blank', 'call leds.top(0, 0, 0)')]
-        ),
-        ('circle',
-         [('circle.off', 'call leds.circle(0,0,0,0,0,0,0,0)'),
-          ('circle.front', 'call leds.circle(31,0,0,0,0,0,0,0)'),
-          ('circle.frontright', 'call leds.circle(0,31,0,0,0,0,0,0)'),
-          ('circle.right', 'call leds.circle(0,0,31,0,0,0,0,0)'),
-          ('circle.backright', 'call leds.circle(0,0,0,31,0,0,0,0)'),
-          ('circle.back', 'call leds.circle(0,0,0,0,31,0,0,0)'),
-          ('circle.backleft', 'call leds.circle(0,0,0,0,0,31,0,0)'),
-          ('circle.left', 'call leds.circle(0,0,0,0,0,0,31,0)'),
-          ('circle.frontleft', 'call leds.circle(0,0,0,0,0,0,0,31)')
-         ]
-        ),
-        ('music',
-         [('chord.C3', 'call sound.freq(262, 45)'),
-          ('chord.E3', 'call sound.freq(330, 45)'),
-          ('chord.G3', 'call sound.freq(392, 45)'),
-          ('chord.B3', 'call sound.freq(494, 45)')]
-        ),
-        ('sound',
-         [('sound.bad', 'call sound.system(4)'),
-          ('sound.good', 'call sound.system(6)')]
-        )
-    ])
-    return {e for x in themes for e in d[x]}
